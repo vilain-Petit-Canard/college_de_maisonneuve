@@ -9,7 +9,7 @@
                     <h5 class="card-title">Ajouter un nouvel etudiant</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{-- route('etudiant.store') --}}" method="POST">
+                    <form action="{{ route('etudiant.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
@@ -54,6 +54,19 @@
                             @if($errors->has('date_de_naissance'))
                             <div class="text-danger mt-2">
                                 {{ $errors->first('date_de_naissance')}}
+                            </div>
+                            @endif
+                        </div>
+                        <div class="mb-3">
+                            <label for="ville" class="form-label">Sélectionnez votre ville de résidence :</label>
+                            <select name="ville" id="ville" value="{{ old('ville') }}" class="form-control">
+                                @foreach($villes as $ville)
+                                    <option value="{{ $ville->id }}" >{{ $ville->nom }}</option>
+                                    @endforeach
+                            </select>
+                            @if($errors->has('completed'))
+                            <div class="text-danger mt-2">
+                                {{ $errors->first('completed')}}
                             </div>
                             @endif
                         </div>

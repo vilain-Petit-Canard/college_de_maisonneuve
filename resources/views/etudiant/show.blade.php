@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="card-footer d-flex justify-content-between">
-        <a href="{{-- route('task.edit', $task->id) --}}" class="btn btn-sm btn-outline-success">Edit</a>
+        <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-sm btn-outline-success">Edit</a>
         <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
             Delete
         </button>
