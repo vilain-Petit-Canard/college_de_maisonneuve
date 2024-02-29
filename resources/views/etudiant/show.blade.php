@@ -34,7 +34,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure to delete the task: {{-- $task->title --}}?
+        Vooulez-vous vraiment supprimer l'étudiant: {{ $etudiant->nom }}?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>

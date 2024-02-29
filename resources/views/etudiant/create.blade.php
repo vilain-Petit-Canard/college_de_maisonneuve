@@ -59,16 +59,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="ville" class="form-label">Sélectionnez votre ville de résidence :</label>
-                            <select name="ville" id="ville" value="{{ old('ville') }}" class="form-control">
+                            <select name="ville" id="ville" class="form-control">
                                 @foreach($villes as $ville)
                                     <option value="{{ $ville->id }}" >{{ $ville->nom }}</option>
                                     @endforeach
                             </select>
-                            @if($errors->has('completed'))
-                            <div class="text-danger mt-2">
-                                {{ $errors->first('completed')}}
-                            </div>
-                            @endif
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>

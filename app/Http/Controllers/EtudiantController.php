@@ -37,30 +37,25 @@ class EtudiantController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
         $request->validate([
             'nom' => 'required|string|max:100',
             'adresse' => 'required|string',
             'telephone' => 'required|string',
             'email' => 'required|email',
-            'ville' => 'required|string',
-            'date_de_naissance' => 'required|date'
-
+            'date_de_naissance' => 'required|date'    
         ]);
-
-        //redirect()->back()->with('errors', [])->inputs([]);
-
-        //return $request;
-         // insert into etudiants ([]) values ([]);   
-         // select * from etudiants where id = last inserted.
+        
         $etudiant = Etudiant::create([
             'nom' => $request->nom,
             'adresse' => $request->adresse,
             'telephone' => $request->telephone,
             'email' => $request->email,
-            'ville' => $request->ville,
+            'ville_id' => $request->ville,
             'date_de_naissance' => $request->date_de_naissance
         ]);
+        // return $request;
+        // return $request;
 
         return  redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant créer avec succès  !');
     }
@@ -83,9 +78,9 @@ class EtudiantController extends Controller
      */
     public function edit(Etudiant $etudiant)
     {
-        $ville = Ville::find($etudiant->ville_id);
+        $ville_etudiant = Ville::find($etudiant->ville_id);
         $villes = Ville::all();
-        return view('etudiant.edit', ['etudiant' => $etudiant, 'ville' => $ville, 'villes' => $villes]);
+        return view('etudiant.edit', ['etudiant' => $etudiant, 'ville_etudiant' => $ville_etudiant, 'villes' => $villes]);
     }
 
     /**
@@ -98,16 +93,15 @@ class EtudiantController extends Controller
             'adresse' => 'required|string',
             'telephone' => 'required|string',
             'email' => 'required|email',
-            'ville' => 'required|string',
             'date_de_naissance' => 'required|date'
         ]);
 
-        $task->update([
+        $etudiant->update([
             'nom' => $request->nom,
             'adresse' => $request->adresse,
             'telephone' => $request->telephone,
             'email' => $request->email,
-            'ville' => $request->ville,
+            'ville_id' => $request->ville,
             'date_de_naissance' => $request->date_de_naissance
         ]);
 
