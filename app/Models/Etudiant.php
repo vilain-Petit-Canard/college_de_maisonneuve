@@ -11,12 +11,12 @@ class Etudiant extends Model
 
     
     protected $fillable = [
-        'nom',
+        'id',
         'adresse',
         'telephone',
-        'email',
         'date_de_naissance',
-        'ville_id'
+        'ville_id' 
     ];
+
 
 }

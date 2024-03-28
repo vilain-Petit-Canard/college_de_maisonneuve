@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Ville;
+use App\Models\User;
 
 
 /**
@@ -19,10 +20,9 @@ class EtudiantFactory extends Factory
     public function definition(): array
     {
         return [
-        'nom' => $this->faker->name,
+        'id' => User::inRandomOrder()->limit(100)->first()->id,  
         'adresse' => $this->faker->address,
         'telephone' => $this->faker->e164PhoneNumber,
-        'email' => $this->faker->email,
         'date_de_naissance' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
         'ville_id' => Ville::inRandomOrder()->limit(15)->first()->id
         ];
